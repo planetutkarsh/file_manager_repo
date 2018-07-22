@@ -1,0 +1,5 @@
+FileName|Author|Date|Gen
+doc_1.txt|shakespeare|11/11/2018|poetry
+doc_2.txt|Shakespeare|31122018|poetry
+doc_3.txt|Shakespeare|12122018|poetry
+ts_elliot_hippopotamus.txt|T.S.Eliot|13-13-2018|Poetry

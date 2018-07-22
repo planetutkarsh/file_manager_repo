@@ -1,0 +1,16 @@
+{% load static %}
+<html>
+    <head>
+        <script src="{% static 'jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'bootstrap.min.js' %}"></script>
+        <script src="{% static 'file_loader.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    </head>
+    <body>
+        {% block content %}
+        {% endblock content %}
+        {% block script %}
+        {% endblock script %}
+    </body>
+    </head>
+</html>
