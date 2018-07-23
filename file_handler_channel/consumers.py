@@ -18,15 +18,18 @@ def connect(message):
 def receive(message):
     """ Send and receives the message
     """
+    # Send the message as file upload is in progress and continue
+    # the file upload in the background
     message.reply_channel.send({'text': json.dumps({'msg': 'uploading the file',
                                                   'status': 'in progress'})})
 
+    # Continue the file upload process in the background
     parallel_upload_the_doc(message.reply_channel.name)
 
 def store_file_metadata_info(orig_file_path):
     """ This method to store the file metadata info for the later use
+        so that later we can avoid duplication of file upload .
     """
-    print("copying the path")
     second_line = None
     original_file_path = orig_file_path
     file_name = os.path.split(original_file_path)[1]
@@ -41,6 +44,9 @@ def store_file_metadata_info(orig_file_path):
             f.write(file_name+ "|" +second_line)
 
 def conn_check_existing_file(new_file_name):
+    """ Read from the metadata file to get the info whether
+        the file has been already uploaded
+    """
     file_path = settings.FILE_META_DATA_INFO_PATH
     meta_data_file = os.path.join(file_path, 'file_meta_data.txt')
     df = pd.read_csv(meta_data_file, sep="|")
