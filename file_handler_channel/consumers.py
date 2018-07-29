@@ -20,8 +20,8 @@ def receive(message):
     """
     # Send the message as file upload is in progress and continue
     # the file upload in the background
-    message.reply_channel.send({'text': json.dumps({'msg': 'uploading the file',
-                                                  'status': 'in progress'})})
+    message.reply_channel.send({'text': json.dumps({'msg': 'files upload started',
+                                                  'status': 'in progress'})}, immediately=True)
 
     # Continue the file upload process in the background
     parallel_upload_the_doc(message.reply_channel.name)
@@ -66,6 +66,10 @@ def parallel_upload_the_doc(channel_name):
         file_exists = conn_check_existing_file(afile)
         if not file_exists:
             with open(os.path.join(dir, afile), 'r') as f:
+                # send the information to front end as file is getting uploaded
+                file_name = os.path.split(f.name)[1]
+                Channel(channel_name).send({'text': json.dumps({'msg': 'uploading the file - %s'%file_name,
+                                                                'status': 'in progress'})}, immediately=True)
                 save_path = os.path.join(settings.MEDIA_ROOT, 'uploads' , afile)
                 path = default_storage.save(save_path, f)
                 # store the metadata info regarding the file while saving
@@ -74,4 +78,5 @@ def parallel_upload_the_doc(channel_name):
                 # use the model to save the link of the path
                 # document = Document.objects.create(name=file_name, path=path)
                 time.sleep(3)
-    Channel(channel_name).send({'text': json.dumps({'msg': 'file uploaded' , 'status': 'loaded'})})
+                Channel(channel_name).send({'text': json.dumps({'msg': 'file -%s uploaded'%file_name , 'status': 'loaded'})})
+    Channel(channel_name).send({'text': json.dumps({'msg': 'file upload finished' , 'status': 'loaded'})})

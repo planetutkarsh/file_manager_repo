@@ -9,7 +9,7 @@ $(function(){
         var message_data = JSON.parse(message.data);
         if(message_data.status == "loaded"){
            var div_block = $('#loaded-files');
-           $('#in-progress').hide();
+           //$('#in-progress').hide();
        } else{
            var div_block = $('#in-progress');
        }

@@ -1,5 +1,4 @@
 FileName|Author|Date|Gen
-doc_1.txt|shakespeare|11/11/2018|poetry
-doc_2.txt|Shakespeare|31122018|poetry
-doc_3.txt|Shakespeare|12122018|poetry
-ts_elliot_hippopotamus.txt|T.S.Eliot|13-13-2018|Poetry
+shakespeare_all_the_worlds_a_stage.txt|shakespeare|11/11/2018|poetry
+shakespeare_over_hill_over_dale.txt|Shakespeare|12122018|poetry
+tennyson_the_change_of_the_light_brigade.txt|Lord Alferd Tennyson|25121854|The charge of the light brigade|poem

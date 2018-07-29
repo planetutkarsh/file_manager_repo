@@ -1,9 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div>
-        <button type="button" class="btn btn-primary" id="file-upload">new button</button>
+    <div class="container">
+        <div class = "row">
+            <div class="col-md-4">
+                <div>
+                    <button type="button" class="btn btn-primary" id="file-upload">Sync Files</button>
+                </div>
+                <div id="in-progress"></div>
+                <div id="loaded-files"></div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="row">
+                    <strong>Files in the Drive :-</strong>
+                </div>
+                {% for file in existing_files %}
+                    <div class="row">
+                        <a href="/media/uploads/{{file}}">{{file}}</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-    <div id="in-progress"></div>
-    <div id="loaded-files"></div>
 
 {% endblock content %}

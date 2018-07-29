@@ -159,3 +159,10 @@ STATICFILES_DIRS = (os.path.join(PROJECT_PATH, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.request",
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+)
