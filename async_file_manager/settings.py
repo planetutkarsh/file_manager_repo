@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from .local_settings import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -78,16 +79,27 @@ WSGI_APPLICATION = 'async_file_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('MY_APP_DB_NAME'),
-		'USER': os.environ.get('MY_APP_USER_NAME'),
-		'PASSWORD': os.environ.get('MY_APP_USER_PASSWORD'),
-		'HOST': 'localhost',
-		'PORT': '5432'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('MY_APP_DB_NAME'),
+# 		'USER': os.environ.get('MY_APP_USER_NAME'),
+# 		'PASSWORD': os.environ.get('MY_APP_USER_PASSWORD'),
+# 		'HOST': 'localhost',
+# 		'PORT': '5432'
+#     }
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'file_handler',
+# 		'USER': 'postgres',
+# 		'PASSWORD': 'nomads',
+# 		'HOST': 'localhost',
+# 		'PORT': '5432'
+#     }
+# }
 
 
 # Password validation
