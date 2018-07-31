@@ -1,5 +1,5 @@
 Author|Date|Name|Gen
-Lord Alferd Tennyson|25121854|The charge of the light brigade|poem
+Lord Alferd Tennyson|25121854|poem
 
 Half a league, half a league,
 Half a league onward,

@@ -47,7 +47,6 @@ def parallel_upload_the_doc(channel_name):
     for afile in file_list:
         file_exists = conn_check_existing_file(afile)
         if not file_exists:
-            import pdb; pdb.set_trace()
             with open(os.path.join(dir, afile), 'r') as f:
                 save_path = os.path.join(settings.MEDIA_ROOT, 'uploads' , afile)
                 path = default_storage.save(save_path, f)
