@@ -1,3 +1,3 @@
 # file_manager_repo
 
-![Alt text](/screenshots/file_contents.png)
+![Alt text](screenshots/file_contents.png)
