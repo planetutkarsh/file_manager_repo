@@ -3,6 +3,8 @@ This app is a basic Django app to upload files from users local computer to the 
 I have used Django Channels, to do the file upload in the an asynchronous manner.
 I have taken a few screen shots to explain the steps.
 
+Here, I am uploading some famous poems to the remote.
+
 Step 1: On the landing page of the application all the already uploaded files in the remote drive is shown.
 ![Alt text](screenshots/files_in_the_drive_before_upload.png)
 
