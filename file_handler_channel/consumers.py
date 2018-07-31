@@ -55,28 +55,29 @@ def conn_check_existing_file(new_file_name):
         return True
 
 def parallel_upload_the_doc(channel_name):
-    from_upload_dir = UserDirectory.objects.all()
-    #for adir in from_upload_dir:
-    walk_dir = os.walk('/Users/utkarsh/projects2/file_handler/async_file_manager/file_handler_app/from_upload')
-    file_list = []
-    for all_data in walk_dir:
-        file_list = all_data[2]
-        dir = all_data[0]
-    for afile in file_list:
-        file_exists = conn_check_existing_file(afile)
-        if not file_exists:
-            with open(os.path.join(dir, afile), 'r') as f:
-                # send the information to front end as file is getting uploaded
-                file_name = os.path.split(f.name)[1]
-                Channel(channel_name).send({'text': json.dumps({'msg': 'uploading the file - %s'%file_name,
-                                                                'status': 'in progress'})}, immediately=True)
-                save_path = os.path.join(settings.MEDIA_ROOT, 'uploads' , afile)
-                path = default_storage.save(save_path, f)
-                # store the metadata info regarding the file while saving
-                store_file_metadata_info(path)
-                dir_path, file_name = ntpath.split(path)
-                # use the model to save the link of the path
-                # document = Document.objects.create(name=file_name, path=path)
-                time.sleep(3)
-                Channel(channel_name).send({'text': json.dumps({'msg': 'file -%s uploaded'%file_name , 'status': 'loaded'})})
+    file_upload_dir = UserDirectory.objects.all()
+    print (file_upload_dir)
+    for adir in file_upload_dir:
+        walk_dir = os.walk(adir.directory_path)
+        file_list = []
+        for all_data in walk_dir:
+            file_list = all_data[2]
+            dir = all_data[0]
+        for afile in file_list:
+            file_exists = conn_check_existing_file(afile)
+            if not file_exists:
+                with open(os.path.join(dir, afile), 'r') as f:
+                    # send the information to front end as file is getting uploaded
+                    file_name = os.path.split(f.name)[1]
+                    Channel(channel_name).send({'text': json.dumps({'msg': 'uploading the file - %s'%file_name,
+                                                                    'status': 'in progress'})}, immediately=True)
+                    save_path = os.path.join(settings.MEDIA_ROOT, 'uploads' , afile)
+                    path = default_storage.save(save_path, f)
+                    # store the metadata info regarding the file while saving
+                    store_file_metadata_info(path)
+                    dir_path, file_name = ntpath.split(path)
+                    # use the model to save the link of the path
+                    # document = Document.objects.create(name=file_name, path=path)
+                    time.sleep(3)
+                    Channel(channel_name).send({'text': json.dumps({'msg': 'file -%s uploaded'%file_name , 'status': 'loaded'})})
     Channel(channel_name).send({'text': json.dumps({'msg': 'file upload finished' , 'status': 'loaded'})})
