@@ -11,7 +11,7 @@ Channels will notify the user when the file upload is done.
 ![Alt text](screenshots/upload_status.png)
 
 Step 3: After the upload newly uploaded will also appear in the files-in-the-drive list.
-![Alt text](sfiles_in_the_drive_after_upload.png)
+![Alt text](files_in_the_drive_after_upload.png)
 
 Step 4: If the user clicks on the name of any file , the content of the file will appear in the browser.
 
